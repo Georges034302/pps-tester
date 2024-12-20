@@ -1,0 +1,14 @@
+name: Analyze Vowel Frequency
+on: [push]  # Trigger the workflow when code is pushed
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Checks out the repository
+
+      - name: Run Vowel Frequency Analyzer
+        uses: ./.github/actions/vowel-frequency-analyzer  # Path to custom action
+        with:
+          file: 'data.txt'  # File to analyze, should be in the repo's root
