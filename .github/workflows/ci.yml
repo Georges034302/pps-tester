@@ -28,7 +28,7 @@ jobs:
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
           echo "Captured frequency result: $FREQ_RESULT"
 
-      - name: Update README with Vowel Frequency
+      - name: Update README 
         run: |
           # Make sure we have the captured frequency result and the GitHub username
           if [[ -z "${{ env.FREQ_RESULT }}" || -z "${{ github.actor }}" ]]; then
