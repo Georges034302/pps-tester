@@ -15,6 +15,13 @@ jobs:
           python-version: '3.9'
 
       - name: Run Vowel Frequency Analyzer
+        id: analyze_vowels
         uses: ./.github/actions/vowel-frequency-analyzer
         with:
           file: 'data.txt'
+
+      - name: Update README with Vowel Frequency
+        run: |
+          result=$(python3 .github/scripts/frequency.py 'data.txt')
+          echo "FREQ_RESULT=$result" >> $GITHUB_ENV
+          bash .github/scripts/update_readme.sh "$FREQ_RESULT" "$GITHUB_ACTOR"
