@@ -16,18 +16,11 @@ jobs:
 
       - name: Run Vowel Frequency Analyzer
         id: vowel_freq
-        uses: ./.github/actions/vowel-frequency-analyzer
-        with:
-          file: 'data.txt'
-
-      - name: Capture Frequency Result
-        id: capture_freq
         run: |
           # Run the frequency.py script to calculate the vowel frequency
           FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
           echo "Captured Frequency Result: $FREQ_RESULT"
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
-          echo "Captured frequency result: $FREQ_RESULT"
 
       - name: Update README with Vowel Frequency
         run: |
