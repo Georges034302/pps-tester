@@ -21,10 +21,11 @@ jobs:
           file: 'data.txt'
 
       - name: Capture Vowel Frequency Result
-        id: freq_result
+        id: capture_freq
         run: |
-          result=$(python3 .github/scripts/frequency.py 'data.txt')
-          echo "FREQ_RESULT=$result" >> $GITHUB_ENV
+          FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
+          echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
+          echo "FREQ_RESULT=$FREQ_RESULT"
 
       - name: Update README with Vowel Frequency
         run: |
