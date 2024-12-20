@@ -20,8 +20,12 @@ jobs:
         with:
           file: 'data.txt'
 
-      - name: Update README with Vowel Frequency
+      - name: Capture Vowel Frequency Result
+        id: freq_result
         run: |
           result=$(python3 .github/scripts/frequency.py 'data.txt')
           echo "FREQ_RESULT=$result" >> $GITHUB_ENV
+
+      - name: Update README with Vowel Frequency
+        run: |
           bash .github/scripts/update_readme.sh "$FREQ_RESULT" "$GITHUB_ACTOR"
