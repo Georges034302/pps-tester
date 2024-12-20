@@ -20,17 +20,17 @@ jobs:
         with:
           file: 'data.txt'
 
-      - name: Capture Frequency
+      - name: Capture Frequency Result
         id: capture_freq
         run: |
-          # Capture the output of the frequency analysis script
+          # Run the frequency.py script to calculate the vowel frequency
           FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
           echo "Captured frequency result: $FREQ_RESULT"
 
       - name: Update README with Vowel Frequency
         run: |
-          # Make sure we have the captured frequency result and the GitHub username
+          # Ensure frequency result and GitHub user are available
           if [[ -z "${{ env.FREQ_RESULT }}" || -z "${{ github.actor }}" ]]; then
             echo "Error: Missing frequency result or GitHub user."
             exit 1
