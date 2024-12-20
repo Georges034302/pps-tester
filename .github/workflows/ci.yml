@@ -15,7 +15,7 @@ jobs:
           python-version: '3.9'
 
       - name: Run Vowel Frequency Analyzer
-        id: analyze_vowels
+        id: vowel_freq
         uses: ./.github/actions/vowel-frequency-analyzer
         with:
           file: 'data.txt'
@@ -30,5 +30,9 @@ jobs:
 
       - name: Update README with Vowel Frequency
         run: |
-          # Ensure the variables are set and then call the script
-          bash .github/scripts/update_readme.sh "$FREQ_RESULT" "$GITHUB_ACTOR"
+          # Make sure we have the captured frequency result and the GitHub username
+          if [[ -z "${{ env.FREQ_RESULT }}" || -z "${{ github.actor }}" ]]; then
+            echo "Error: Missing frequency result or GitHub user."
+            exit 1
+          fi
+          bash .github/scripts/update_readme.sh "${{ env.FREQ_RESULT }}" "${{ github.actor }}"
