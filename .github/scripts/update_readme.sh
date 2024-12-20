@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 # Inputs
 FREQ_RESULT=$1
 GITHUB_USER=$2
