@@ -25,7 +25,6 @@ jobs:
         run: |
           # Run the frequency analysis and capture the result
           FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
-          # Store the result in an environment variable for later steps
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
           echo "Captured frequency result: $FREQ_RESULT"
 
