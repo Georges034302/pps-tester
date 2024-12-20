@@ -32,6 +32,12 @@ jobs:
           if [ "${{ github.actor }}" == "member2" ]; then
             echo "<!-- Updated by Member 2 on $(date) -->" >> member2.html
           fi
+      # Step 4: Update README    
+      - name: Update README
+        run: |
+          # Append a log entry to the README.md
+          echo "- Updated by ${{ github.actor }} on $(date '+%Y-%m-%d %H:%M:%S') [Commit: $(git rev-parse --short HEAD)]" >> README.md
+
       
       # Step 4: Commit changes back to the repository
       - name: Commit and Push Changes
