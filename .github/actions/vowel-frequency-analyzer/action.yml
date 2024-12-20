@@ -1,11 +1,15 @@
 name: 'Vowel Frequency Analyzer'
-description: 'Analyzes the frequency of vowels in a given text file'
+description: 'Custom action to analyze the frequency of vowels in a given text file.'
 
 inputs:
   file:
-    description: 'The path to the text file to analyze'
+    description: 'The path to the text file to analyze.'
     required: true
 
 runs:
-  using: 'python'
-  main: 'scripts/frequency.py'  # Executes the frequency.py script located in the scripts folder
+  using: 'composite'
+  steps:
+    - name: Run Vowel Frequency Analyzer
+      shell: bash
+      run: |
+        python3 .github/scripts/frequency.py ${{ inputs.file }}
