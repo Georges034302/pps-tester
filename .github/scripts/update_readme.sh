@@ -5,8 +5,8 @@ FREQ_RESULT=$1
 GITHUB_USER=$2
 TIMESTAMP=$(date)
 
-# Append the result to README.md
-echo "[$GITHUB_USER: $FREQ_RESULT - $TIMESTAMP]" >> README.md
+# Update README with the correct format
+echo "[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> README.md
 
 # Configure Git to use GitHub Actions user and email
 git config --global user.name "github-actions"
