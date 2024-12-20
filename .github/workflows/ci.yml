@@ -19,10 +19,8 @@ jobs:
         run: |
           # Run the frequency.py script to calculate the vowel frequency
           FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
-          echo "Captured Frequency Result: $FREQ_RESULT"
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
 
       - name: Update README with Vowel Frequency
         run: |
-          # Now call the update_readme.sh script
           bash .github/scripts/update_readme.sh "${{ env.FREQ_RESULT }}" "${{ github.actor }}"
