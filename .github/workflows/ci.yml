@@ -20,7 +20,7 @@ jobs:
         with:
           file: 'data.txt'
 
-      - name: Capture Frequency Result
+      - name: Capture Frequency
         id: capture_freq
         run: |
           # Capture the output of the frequency analysis script
