@@ -31,13 +31,13 @@ jobs:
 
       - name: Update README with Vowel Frequency
         run: |
-          # Debugging: Check the frequency result and GitHub user
           echo "FREQ_RESULT=${{ env.FREQ_RESULT }}"
           echo "GITHUB_USER=${{ github.actor }}"
 
-          # Ensure frequency result and GitHub user are available
           if [[ -z "${{ env.FREQ_RESULT }}" || -z "${{ github.actor }}" ]]; then
             echo "Error: Missing frequency result or GitHub user."
             exit 1
           fi
+
+          # Now call the update_readme.sh script
           bash .github/scripts/update_readme.sh "${{ env.FREQ_RESULT }}" "${{ github.actor }}"
