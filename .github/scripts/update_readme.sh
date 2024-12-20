@@ -5,7 +5,13 @@ FREQ_RESULT=$1
 GITHUB_USER=$2
 TIMESTAMP=$(date)
 
-# Update README with the correct format
+# Ensure the frequency result and GitHub user are not empty
+if [ -z "$FREQ_RESULT" ] || [ -z "$GITHUB_USER" ]; then
+  echo "Error: Missing frequency result or GitHub user."
+  exit 1
+fi
+
+# Update README with the correct format, each entry on a new line
 echo "[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> README.md
 
 # Configure Git to use GitHub Actions user and email
