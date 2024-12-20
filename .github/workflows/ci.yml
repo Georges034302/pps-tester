@@ -25,11 +25,16 @@ jobs:
         run: |
           # Run the frequency.py script to calculate the vowel frequency
           FREQ_RESULT=$(python3 .github/scripts/frequency.py 'data.txt')
+          echo "Captured Frequency Result: $FREQ_RESULT"
           echo "FREQ_RESULT=$FREQ_RESULT" >> $GITHUB_ENV
           echo "Captured frequency result: $FREQ_RESULT"
 
       - name: Update README with Vowel Frequency
         run: |
+          # Debugging: Check the frequency result and GitHub user
+          echo "FREQ_RESULT=${{ env.FREQ_RESULT }}"
+          echo "GITHUB_USER=${{ github.actor }}"
+
           # Ensure frequency result and GitHub user are available
           if [[ -z "${{ env.FREQ_RESULT }}" || -z "${{ github.actor }}" ]]; then
             echo "Error: Missing frequency result or GitHub user."
